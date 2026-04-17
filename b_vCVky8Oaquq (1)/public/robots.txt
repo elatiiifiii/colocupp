@@ -1,0 +1,13 @@
+# Robots.txt for COLOC UP
+# https://colocup.vercel.app
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Disallow: /dashboard.html
+
+# Sitemap location
+Sitemap: https://colocup.vercel.app/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

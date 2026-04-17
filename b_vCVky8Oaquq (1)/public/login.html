@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion - COLOC UP | Accédez à Votre Compte</title>
+  <meta name="description" content="Connectez-vous à COLOC UP pour gérer vos réservations de logements étudiants, consulter vos messages et trouver votre colocation idéale.">
+  <meta name="keywords" content="connexion coloc up, login étudiant, compte logement étudiant">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://colocup.vercel.app/login.html">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Login to continue</p>
+
+      <input id="username" type="text" placeholder="Username" autocomplete="username">
+
+      <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+
+      <div class="login-buttons">
+        <button id="loginBtn">Login</button>
+        <button id="registerBtn" class="secondary">Register</button>
+      </div>
+
+      <p id="errorMsg" class="error"></p>
+    </div>
+  </div>
+
+  <script>
+    const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const errorMsg = document.getElementById("errorMsg");
+
+    function getCredentials() {
+      return {
+        username: document.getElementById("username").value.trim(),
+        password: document.getElementById("password").value
+      };
+    }
+
+    loginBtn.onclick = async () => {
+      errorMsg.textContent = "";
+      const { username, password } = getCredentials();
+
+      try {
+        const res = await fetch("/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (!res.ok) throw new Error("Invalid username or password");
+
+        const user = await res.json();
+        localStorage.setItem("user", JSON.stringify(user));
+        window.location = "dashboard.html";
+
+      } catch (err) {
+        errorMsg.textContent = err.message;
+      }
+    };
+
+    registerBtn.onclick = async () => {
+      errorMsg.textContent = "";
+      const { username, password } = getCredentials();
+
+      try {
+        const res = await fetch("/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (!res.ok) throw new Error("Registration failed");
+
+        alert("Account created successfully!");
+      } catch (err) {
+        errorMsg.textContent = err.message;
+      }
+    };
+  </script>
+
+</body>
+</html>

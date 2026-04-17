@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord - COLOC UP | Gérez Vos Logements</title>
+  <meta name="description" content="Gérez vos réservations, consultez vos messages et trouvez de nouveaux logements étudiants sur COLOC UP.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://colocup.vercel.app/dashboard.html">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="initApp()">
+
+<header class="navbar">
+  <h2>🏠 COLOC UP</h2>
+  <div>
+    <button onclick="showTab('listings')">Logements</button>
+    <button onclick="showTab('bookings')">Réservations</button>
+    <button onclick="showTab('history')">Historique</button>
+    <button onclick="showTab('messages')">Messages</button>
+    <button onclick="showTab('profile')">Profil</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="banner">✨ Trouvez votre logement étudiant idéal ! ✨</div>
+
+<div class="filters">
+  <input id="cityFilter" placeholder="Ville">
+  <input id="priceFilter" placeholder="Prix max">
+  <button onclick="loadListings()">Filtrer</button>
+</div>
+
+<!-- LISTINGS -->
+<div id="listings" class="tab"></div>
+
+<!-- BOOKINGS -->
+<div id="bookings" class="tab hidden">
+  <h2>Mes réservations</h2>
+  <div id="bookingList"></div>
+</div>
+
+<!-- HISTORIQUE -->
+<div id="history" class="tab hidden">
+  <h2>Historique des transactions</h2>
+  <div id="historyList"></div>
+</div>
+
+<!-- MESSAGES -->
+<div id="messages" class="tab hidden">
+  <h2>Messages</h2>
+  <div id="chatBox"></div>
+  <input id="msgInput" placeholder="Message...">
+  <button onclick="sendMessage()">Envoyer</button>
+</div>
+
+<!-- PROFILE -->
+<div id="profile" class="tab hidden">
+  <h2>👤 Mon Profil</h2>
+
+  <div class="profile-card">
+    <div id="profileHeader"></div>
+
+    <div class="profile-stats">
+      <div class="stat">
+        <h3 id="totalBookings">0</h3>
+        <p>Réservations</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="paidBookings">0</h3>
+        <p>Payées</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="pendingBookings">0</h3>
+        <p>En attente</p>
+      </div>
+
+      <div class="stat">
+        <h3 id="favCount">0</h3>
+        <p>Favoris</p>
+      </div>
+    </div>
+
+    <div class="profile-wallet">
+      <h3 id="walletDisplay"></h3>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT SIMPLE + NOTE -->
+<footer class="footer-simple">
+  <h3>📞 Contact</h3>
+  <p>+212 6 12 34 56 78</p>
+  <p>📧 contact@colocup.com</p>
+
+  <hr>
+
+  <p class="rating-text">
+    ⭐ <strong>9.3/10</strong> utilisateurs recommandent ce site
+  </p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COLOC UP - Location de Logements Étudiants | Trouvez Votre Colocation Idéale</title>
+  <meta name="description" content="COLOC UP est la plateforme de référence pour trouver votre logement étudiant. Découvrez des colocations, studios et appartements à louer près de votre campus. Réservation simple et rapide.">
+  <meta name="keywords" content="colocation étudiante, logement étudiant, appartement étudiant, location chambre, coloc, studio étudiant, résidence étudiante, France">
+  <meta name="author" content="COLOC UP">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://colocup.vercel.app/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colocup.vercel.app/">
+  <meta property="og:title" content="COLOC UP - Location de Logements Étudiants">
+  <meta property="og:description" content="Trouvez votre logement étudiant idéal. Colocations, studios et appartements à louer près de votre campus.">
+  <meta property="og:image" content="https://colocup.vercel.app/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://colocup.vercel.app/">
+  <meta name="twitter:title" content="COLOC UP - Location de Logements Étudiants">
+  <meta name="twitter:description" content="Trouvez votre logement étudiant idéal. Colocations, studios et appartements à louer près de votre campus.">
+  <meta name="twitter:image" content="https://colocup.vercel.app/images/og-image.jpg">
+  
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "COLOC UP",
+    "url": "https://colocup.vercel.app/",
+    "description": "Plateforme de location de logements étudiants en France",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://colocup.vercel.app/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="initApp()">
+
+<header class="navbar">
+  <h1>🏠 COLOC UP</h1>
+  <nav>
+    <button onclick="showTab('listings')">Logements</button>
+    <button onclick="showTab('bookings')">Réservations</button>
+    <button onclick="showTab('messages')">Messages</button>
+    <button onclick="showTab('profile')">Profil</button>
+    <button onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<div class="banner">✨ Trouvez votre logement étudiant idéal ! ✨</div>
+
+<div class="filters">
+  <input id="cityFilter" placeholder="Ville">
+  <input id="priceFilter" placeholder="Prix max">
+  <button onclick="loadListings()">Filtrer</button>
+</div>
+
+<!-- LISTINGS -->
+<div id="listings" class="tab"></div>
+
+<!-- BOOKINGS -->
+<div id="bookings" class="tab hidden">
+  <h2>Mes réservations</h2>
+  <div id="bookingList"></div>
+</div>
+
+<!-- MESSAGES -->
+<div id="messages" class="tab hidden">
+  <h2>Messages</h2>
+  <div id="chatBox"></div>
+  <input id="msgInput" placeholder="Message...">
+  <button onclick="sendMessage()">Envoyer</button>
+</div>
+
+<!-- PROFILE -->
+<div id="profile" class="tab hidden">
+  <h2>Profil</h2>
+  <p id="userInfo"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
